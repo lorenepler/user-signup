@@ -33,8 +33,10 @@ def validate_verify(password, verify):
     if password == verify:
         return verify
 def validate_email(email):
-    return EMAIL_RE.match(email)
-
+    if email=="":
+        return True ##surely not the best way to do that
+    else:
+        return EMAIL_RE.match(email)
 
 header = "<h1>Signup</h1>"
 username_label = "<label>Username</label>"
