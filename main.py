@@ -76,6 +76,7 @@ class MainHandler(webapp2.RequestHandler):
         valid_pass = validate_password(self.request.get('password'))
         valid_verify = validate_verify(self.request.get('password'),self.request.get('verify'))
         valid_email = validate_email(self.request.get('email'))
+        username = self.request.get('username')
 
         if not valid_username:
             self.write_form(username_error="Invalid Username")
@@ -86,7 +87,7 @@ class MainHandler(webapp2.RequestHandler):
         elif not valid_email:
             self.write_form(email_error="Invalid Email")
         else:
-            self.response.out.write("Welcome!")
+            self.response.out.write("<h1>Welcome, "+ username + "</h1>")
 
 ##class WelcomeHandler(webapp2.RequestHandler):
 ##
